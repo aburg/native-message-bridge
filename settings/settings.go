@@ -1,9 +1,9 @@
 package settings
 
 const (
-	Version                                  = "0.0.1"
+	Version                                  = "0.0.2"
 	TridactylNativeMessengerEmulationVersion = "0.5.0"
-	DbusPath                                 = "/net/andreasburg/fndb"
-	DbusName                                 = "net.andreasburg.fndb"
+	DbusPath                                 = "/net/andreasburg/nmb"
+	DbusName                                 = "net.andreasburg.nmb"
 	HomeRelativeConfigPath                   = ".config/tridactyl/tridactylrc"
 )

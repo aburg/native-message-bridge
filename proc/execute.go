@@ -15,12 +15,9 @@ import (
 )
 
 func Excecute() {
-	conn := util.DbusConnect()
-	defer conn.Close()
-
 	// util.DbusMsg(conn, fmt.Sprintf("pwd: %s", util.GetPwd()))
 	reader := bufio.NewReader(os.Stdin)
-	// util.DbusMsg(conn, "reader is connected")
+	util.DbusMsg("reader is connected")
 	for {
 		// 1. Read the 4-byte length header (Little Endian)
 		var length uint32
@@ -40,7 +37,7 @@ func Excecute() {
 		}
 
 		// 3. Log the raw message
-		util.DbusMsg(conn, string(payload))
+		util.DbusMsg(string(payload))
 
 		var msg models.Message
 		json.Unmarshal(payload, &msg)
@@ -52,16 +49,16 @@ func Excecute() {
 		case "getconfig":
 			config, err := util.ReadConfig()
 			if err != nil {
-				util.DbusMsg(conn, fmt.Sprintf("getconfig error: %s", err))
+				util.DbusMsg(fmt.Sprintf("getconfig error: %s", err))
 			} else {
 				response := models.Response{Content: config, Code: 0}
 				util.SendResponse(response)
 			}
 		case "run":
-			resp := models.Response{Content: msg.Command, Code: 0}
+			resp := Run(msg.Command)
 			util.SendResponse(resp)
 		default:
-			util.DbusMsg(conn, fmt.Sprintf("unknown command: %s", msg.Cmd))
+			util.DbusMsg(fmt.Sprintf("unknown command: %s", msg.Cmd))
 		}
 
 		// 4. Send a JSON response back (Required by Firefox)

@@ -14,3 +14,4 @@ Actually this is just a mess of code clobbered together with AI.
 - make this work with cobra (as of now it is not using cobra, because that somehow trips stuff up... i do not understand it)
 - command: version
 - command: manifest
+- --verbose should increase messaging (on dbus?)
