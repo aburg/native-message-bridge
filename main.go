@@ -21,8 +21,11 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/aburg/native-message-bridge/cmd"
+import (
+	"github.com/aburg/native-message-bridge/proc"
+)
 
 func main() {
-	cmd.Execute()
+	// cmd.Execute()
+	proc.Run()
 }
