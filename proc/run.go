@@ -14,9 +14,9 @@ func Run(commandLine string) models.Response {
 	matches := re.FindStringSubmatch(commandLine)
 
 	if len(matches) > 0 {
-		util.DbusMsg("no match")
-	} else {
 		util.DbusMsg(fmt.Sprintf("command: %s, args:%s", matches[1], matches[2]))
+	} else {
+		util.DbusMsg("no match")
 	}
 	return models.Response{Code: 0}
 }
