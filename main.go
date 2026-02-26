@@ -26,6 +26,7 @@ import (
 )
 
 func main() {
+	// TODO: make this run via cobra. proc.Execute should then be run inside the root command
 	// cmd.Execute()
-	proc.Run()
+	proc.Excecute()
 }

@@ -14,7 +14,7 @@ import (
 	"github.com/aburg/native-message-bridge/util"
 )
 
-func Run() {
+func Excecute() {
 	conn := util.DbusConnect()
 	defer conn.Close()
 
