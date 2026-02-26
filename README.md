@@ -15,3 +15,4 @@ Actually this is just a mess of code clobbered together with AI.
 - command: version
 - command: manifest
 - --verbose should increase messaging (on dbus?)
+- define runnable commands in a yaml config?
