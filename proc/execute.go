@@ -55,13 +55,20 @@ func Excecute() {
 				util.SendResponse(response)
 			}
 		case "run":
-			resp := Run(msg.Command)
-			util.SendResponse(resp)
+			var command models.Command
+			json.Unmarshal([]byte(msg.Command), &command)
+			switch command.Cmd {
+			case "bookmark":
+				util.SendResponse(ProcessBookmarkMessage(msg))
+			default:
+				util.SendFailureResponse(fmt.Sprintf("unknown cmd: %s", command.Cmd))
+			}
 		default:
-			util.DbusMsg(fmt.Sprintf("unknown command: %s", msg.Cmd))
+			util.SendFailureResponse(fmt.Sprintf("unknown command: %s", msg.Cmd))
 		}
 
 		// 4. Send a JSON response back (Required by Firefox)
+		// TODO: check if this is really needed or just an ai hallucination again
 		util.SendResponse(models.Response{Status: "received", Time: time.Now().Format(time.Kitchen)})
 	}
 }
