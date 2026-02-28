@@ -54,6 +54,9 @@ func Excecute() {
 				response := models.Response{Content: config, Code: 0}
 				util.SendResponse(response)
 			}
+		case "getconfigpath":
+			resp := models.Response{Content: util.GetRcPath(), Code: 0}
+			util.SendResponse(resp)
 		case "run":
 			var command models.Command
 			json.Unmarshal([]byte(msg.Command), &command)
