@@ -60,6 +60,8 @@ func Excecute() {
 			switch command.Cmd {
 			case "bookmark":
 				util.SendResponse(ProcessBookmarkMessage(msg))
+			case "jellify":
+				util.SendResponse(ProcessJellifyMessage(msg))
 			default:
 				util.SendFailureResponse(fmt.Sprintf("unknown cmd: %s", command.Cmd))
 			}
