@@ -54,6 +54,8 @@ func Excecute() {
 				response := models.Response{Content: config, Code: 0}
 				util.SendResponse(response)
 			}
+		case "read":
+			util.SendResponse(ProcessReadMessage(payload))
 		case "getconfigpath":
 			resp := models.Response{Content: util.GetRcPath(), Code: 0}
 			util.SendResponse(resp)

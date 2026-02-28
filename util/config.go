@@ -7,7 +7,7 @@ import (
 	"github.com/aburg/native-message-bridge/settings"
 )
 
-func getConfigPath(segments ...string) string {
+func GetConfigPath(segments ...string) string {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		panic("could not get homedir")
@@ -16,5 +16,5 @@ func getConfigPath(segments ...string) string {
 }
 
 func GetRcPath() string {
-	return getConfigPath(settings.RcFile)
+	return GetConfigPath(settings.RcFile)
 }
