@@ -15,7 +15,6 @@ func ProcessBookmarkMessage(msg models.Message) models.Response {
 		return models.Response{Code: 1, Content: fmt.Sprintf("json decode failed with error: %s", err.Error())}
 	}
 
-	// out, err := exec.Command("bash", "/home/abu/.tx-store/bookmark/record-with-hypr-popup.sh", bookmarkCommand.URL, bookmarkCommand.Title).CombinedOutput()
 	out, err := exec.Command("bash", "/home/abu/.tx-store/bookmark/record-with-hypr-popup.sh", bookmarkCommand.URL, bookmarkCommand.Title).CombinedOutput()
 	if err != nil {
 		return models.Response{Code: 1, Content: fmt.Sprintf("bookmark error: %s, output: %s", err.Error(), out)}
